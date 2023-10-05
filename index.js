@@ -17,7 +17,12 @@ app.use(express.static(path.join(__dirname, "../client/public")));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+const corsOptions = {
+    origin: 'https://real-estate-mern-frontend.vercel.app', // Replace with your frontend domain
+    credentials: true, // If you're using cookies or credentials in your requests
+  };
+  
+  app.use(cors(corsOptions));
 
 
 app.listen(PORT, () => {
